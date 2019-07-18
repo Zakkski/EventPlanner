@@ -16,21 +16,24 @@
       <div class="player-info">
         <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
         <h3 class="small-faded score-info">Score: <%= player.score %>pts</h3>
+        <%= form_for [@event, player] do |f| %>
+          <%= f.hidden_field :score, value: (player.score + 5) %>
+          <%= f.submit "+5" %>
+        <% end %>
+        <%= form_for [@event, player] do |f| %>
+          <%= f.hidden_field :score, value: (player.score - 5) %>
+          <%= f.submit "-5" %>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
 
-
-<%= form_for(@new_player) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.select :country_code, @countries %>
-  <%= f.hidden_field :event_id, value: @event.id  %>
-  <%= f.submit "Add" %>
+<% if @event.open %>
+  <%= link_to "Add a player!", new_event_player_path(@event) %>
 <% end %>
+
+
 
 <% if @event.user == current_user %>
   <%= link_to "Open/Close", @event, method: :patch %>
