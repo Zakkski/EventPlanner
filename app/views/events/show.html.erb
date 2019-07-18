@@ -15,15 +15,9 @@
       </div>
       <div class="player-info">
         <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
-        <h3 class="small-faded score-info">Score: <%= player.score %>pts</h3>
-        <%= form_for [@event, player] do |f| %>
-          <%= f.hidden_field :score, value: (player.score + 5) %>
-          <%= f.submit "+5" %>
-        <% end %>
-        <%= form_for [@event, player] do |f| %>
-          <%= f.hidden_field :score, value: (player.score - 5) %>
-          <%= f.submit "-5" %>
-        <% end %>
+        <h3 class="small-faded score-info">Score: <span data-player-id="<%= player.id %>"><%= player.score %></span>pts</h3>
+        <%= link_to "+5", player_path(player, interval: 5), method: :patch, remote: true %>
+        <%= link_to "-5", player_path(player, interval: -5), method: :patch, remote: true %>
       </div>
     </div>
   <% end %>
@@ -37,5 +31,5 @@
 
 <% if @event.user == current_user %>
   <%= link_to "Open/Close", @event, method: :patch %>
-  <%= link_to "Delete Event", @event, method: :delete %>
+  <%= link_to "Delete Event", @event, method: :delete, data: { confirm: "Are You sure?" } %>
 <% end %>

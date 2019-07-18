@@ -19,9 +19,11 @@ class PlayersController < ApplicationController
   end
 
   def update
-    player = Player.find(params[:id])
-    player.update_attributes(player_params)
-    redirect_to event_path(Event.find(params[:event_id]))
+    @player = Player.find(params[:id])
+    interval = params[:interval].to_i
+    @player.score += interval
+    @player.save
+    @score = @player.score
   end
 
   private
