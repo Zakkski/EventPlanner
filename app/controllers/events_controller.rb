@@ -1,11 +1,17 @@
+require 'csv'
+
 class EventsController < ApplicationController
   def index
-    @events = current_user.events
+    @events = current_user.events || []
   end
 
   def show
     @event = Event.find(params[:id])
     @players = @event.players
+    @countries = []
+    CSV.foreach('./app/assets/data/countries.csv') do |row|
+      @countries << row[0]
+    end
     # raise
     @new_player = Player.new(event: @event)
   end
