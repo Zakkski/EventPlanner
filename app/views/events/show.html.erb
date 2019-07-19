@@ -1,9 +1,16 @@
+<div class="event-banner">
+  <%= image_tag "cups"%>
+  <h1><%= @event.title %></h1>
+</div>
+<div class="winner-banner">
+  <%= render partial: 'shared/winner_item', locals: { player: @top_three[1] } %>
+  <div class="center-card">
+    <%= render partial: 'shared/winner_item', locals: { player: @top_three[0] } %>
+  </div>
+  <%= render partial: 'shared/winner_item', locals: { player: @top_three[2] } %>
+</div>
 
-<!-- <h1><%#= @event.title %></h1>
-<%# if @event.user == current_user %>
-  <h3>Open for players: <%#= @event.open %></h3>
-<%# end %> -->
-
+<% if @players %>
 <div class="player-list">
   <% @players.each do |player| %>
     <div class="player-item">
@@ -20,12 +27,13 @@
     </div>
     <div class="score-buttons">
       <% if @event.user == current_user %>
-        <%= link_to "+", player_path(player, interval: 5), class: "score-button", method: :patch, remote: true %>
-        <%= link_to "-", player_path(player, interval: -5), class: "score-button", method: :patch, remote: true %>
+        <%#= link_to "+", player_path(player, interval: 5), class: "score-button", method: :patch, remote: true %>
+        <%#= link_to "-", player_path(player, interval: -5), class: "score-button", method: :patch, remote: true %>
       <% end %>
     </div>
   <% end %>
 </div>
+<% end %>
 
 <% if @event.open %>
   <%= link_to "Add a player!", new_event_player_path(@event) %>

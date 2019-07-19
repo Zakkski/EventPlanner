@@ -5,6 +5,12 @@
 $body-font: "Open Sans", "Helvetica", "sans-serif";
 $headers-font: "Raleway", "Helvetica", "sans-serif";
 
+@font-face {
+  font-family: "Viking";
+  src: font-url('pr_viking.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
@@ -14,3 +20,13 @@ $headers-font: "Raleway", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+// @font-face {
+//     font-family: 'dungeonregular';
+//     src: url('dungeon-webfont.woff2') format('woff2'),
+//          url('dungeon-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+//
+// }

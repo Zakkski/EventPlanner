@@ -1,3 +1,34 @@
+.player-icon {
+  position: relative;
+
+  img {
+    width: 55px;
+    margin-right: 10px;
+  }
+
+
+  .place-circle {
+    background-color: rgb(189, 189, 189);
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+    top: 36px;
+    left: 32px;
+  }
+
+  .place-circle.gold {
+    background-color: #FFD600;
+  }
+  .place-circle.silver {
+    background-color: #A6A6A6;
+  }
+  .place-circle.bronze {
+    background-color: #F6A546;
+  }
+}
+
 .player-list {
   width: 100%;
   padding: 4px;
@@ -8,36 +39,6 @@
     align-items: center;
     padding: 8px;
 
-    .player-icon {
-      position: relative;
-
-      img {
-        width: 55px;
-        margin-right: 10px;
-      }
-
-
-      .place-circle {
-        background-color: rgb(189, 189, 189);
-        text-align: center;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        position: absolute;
-        top: 36px;
-        left: 32px;
-      }
-
-      .place-circle.gold {
-        background-color: #FFD600;
-      }
-      .place-circle.silver {
-        background-color: #A6A6A6;
-      }
-      .place-circle.bronze {
-        background-color: #F6A546;
-      }
-    }
 
 
     .player-info {
@@ -61,7 +62,42 @@
         min-width: 65px;
       }
     }
+  }
+}
 
+.winner-banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 230px;
+  padding: 10px;
+  padding-bottom: 40px;
 
+  .player-icon {
+    margin: 10px 20px;
+  }
+
+  .player-info {
+    width: 100%;
+    text-align: center;
+
+    .small-faded {
+      font-size: 12px;
+      opacity: .5;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .score-info {
+      margin-top: 4px;
+      min-width: 65px;
+    }
+  }
+
+  .center-card {
+    margin-bottom: 30px;
   }
 }
