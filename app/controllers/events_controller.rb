@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @players = @event.players
+    @players = @event.players.sort_by { |player| -player.score }
   end
 
   def new
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     event = Event.new(event_params)
     event.user = current_user
 
-    if event.save!
+    if event.save
       redirect_to event
     else
       render :new
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    render :index
+    redirect_to events_path
   end
 
   private

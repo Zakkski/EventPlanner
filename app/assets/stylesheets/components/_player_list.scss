@@ -16,8 +16,9 @@
         margin-right: 10px;
       }
 
+
       .place-circle {
-        background-color: rgb(163, 163, 163);
+        background-color: rgb(189, 189, 189);
         text-align: center;
         width: 25px;
         height: 25px;
@@ -25,10 +26,16 @@
         position: absolute;
         top: 36px;
         left: 32px;
+      }
 
-        p {
-          margin: 0;
-        }
+      .place-circle.gold {
+        background-color: #FFD600;
+      }
+      .place-circle.silver {
+        background-color: #A6A6A6;
+      }
+      .place-circle.bronze {
+        background-color: #F6A546;
       }
     }
 
