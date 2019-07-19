@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @event = Event.find(params[:event_id])

@@ -1,8 +1,15 @@
 <%= form_for [@event, @player] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.select :country_code, @countries %>
-  <%= f.submit "Add" %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Tom" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "The Spear of Adun" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :country %>
+    <%= f.select :country_code, @countries %>
+  </div>
+  <%= f.submit "Create Player" %>
 <% end %>

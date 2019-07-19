@@ -16,9 +16,13 @@
       <div class="player-info">
         <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
         <h3 class="small-faded score-info">Score: <span data-player-id="<%= player.id %>"><%= player.score %></span>pts</h3>
-        <%= link_to "+5", player_path(player, interval: 5), method: :patch, remote: true %>
-        <%= link_to "-5", player_path(player, interval: -5), method: :patch, remote: true %>
       </div>
+    </div>
+    <div class="score-buttons">
+      <% if @event.user == current_user %>
+        <%= link_to "+", player_path(player, interval: 5), class: "score-button", method: :patch, remote: true %>
+        <%= link_to "-", player_path(player, interval: -5), class: "score-button", method: :patch, remote: true %>
+      <% end %>
     </div>
   <% end %>
 </div>

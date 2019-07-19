@@ -3,3 +3,5 @@
 <% @events.each do |event| %>
   <%= link_to event.title, event %>
 <% end %>
+
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
