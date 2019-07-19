@@ -1,0 +1,60 @@
+.player-list {
+  width: 100%;
+  padding: 4px;
+  margin: 10px 0;
+
+  .player-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+
+    .player-icon {
+      position: relative;
+
+      img {
+        width: 55px;
+        margin-right: 10px;
+      }
+
+      .place-circle {
+        background-color: rgb(163, 163, 163);
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        position: absolute;
+        top: 36px;
+        left: 32px;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+
+    .player-info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+
+      .small-faded {
+        font-size: 12px;
+        opacity: .5;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .score-info {
+        margin-top: 4px;
+        min-width: 65px;
+      }
+    }
+
+
+  }
+}

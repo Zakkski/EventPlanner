@@ -1,22 +1,35 @@
-<h1><%= @event.title %></h1>
-<% if @event.user == current_user %>
-  <h3>Open for players: <%= @event.open %></h3>
+
+<!-- <h1><%#= @event.title %></h1>
+<%# if @event.user == current_user %>
+  <h3>Open for players: <%#= @event.open %></h3>
+<%# end %> -->
+
+<div class="player-list">
+  <% @players.each do |player| %>
+    <div class="player-item">
+      <div class="player-icon">
+        <%= image_tag "flags/#{player.country_code}.png" %>
+        <div class="place-circle">
+          <p>1</p>
+        </div>
+      </div>
+      <div class="player-info">
+        <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
+        <h3 class="small-faded score-info">Score: <span data-player-id="<%= player.id %>"><%= player.score %></span>pts</h3>
+        <%= link_to "+5", player_path(player, interval: 5), method: :patch, remote: true %>
+        <%= link_to "-5", player_path(player, interval: -5), method: :patch, remote: true %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if @event.open %>
+  <%= link_to "Add a player!", new_event_player_path(@event) %>
 <% end %>
-<% @players.each do |player| %>
-  <%= player.name %>
-  <%= image_tag "flags/#{player.country_code}.png" %>
-<% end %>
-<%= form_for(@new_player) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.select :country_code, @countries %>
-  <%= f.hidden_field :event_id, value: @event.id  %>
-  <%= f.submit "Add" %>
-<% end %>
+
+
 
 <% if @event.user == current_user %>
   <%= link_to "Open/Close", @event, method: :patch %>
-  <%= link_to "Delete Event", @event, method: :delete %>
+  <%= link_to "Delete Event", @event, method: :delete, data: { confirm: "Are You sure?" } %>
 <% end %>
