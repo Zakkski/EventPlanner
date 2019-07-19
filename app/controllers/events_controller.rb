@@ -1,6 +1,8 @@
 require 'csv'
 
 class EventsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
+
   def index
     @events = current_user.events || []
   end
