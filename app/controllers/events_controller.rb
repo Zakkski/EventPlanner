@@ -9,7 +9,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @players = @event.players.sort_by { |player| -player.score }
+    players = @event.players.sort_by { |player| -player.score }
+    @top_three = players[0..2]
+    @players = players[3..-1]
   end
 
   def new
@@ -17,11 +19,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params)
-    event.user = current_user
+    @event = Event.new(event_params)
+    @event.user = current_user
 
-    if event.save
-      redirect_to event
+    if @event.save
+      redirect_to @event
     else
       render :new
     end
