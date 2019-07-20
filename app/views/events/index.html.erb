@@ -1,7 +1,9 @@
-<h1>Your events</h1>
-<%= link_to "Create Event", new_event_path %>
-<% @events.each do |event| %>
-  <%= link_to event.title, event %>
-<% end %>
+<div class="events-container">
+  <h1>Your events</h1>
+  <% @events.each do |event| %>
+  <%= link_to event.title, event, class: "event-button" %>
+  <% end %>
+</div>
 
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<%= link_to "Create Event", new_event_path, class: "main-button" %>
+<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button" %>

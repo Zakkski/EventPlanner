@@ -31,3 +31,26 @@
     width: 200px;
   }
 }
+
+.search-form {
+  input {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    display: block;
+    border-radius: 45px;
+    padding: 10px;
+    border: 2px solid rgb(190, 190, 190);
+  }
+
+  input[type=submit] {
+    margin-top: 290px;
+    margin-bottom: 30px;
+    border: none;
+    padding: 10px;
+    background: #085BC2;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+  }
+}

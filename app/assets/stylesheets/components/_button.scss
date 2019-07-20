@@ -14,3 +14,52 @@
 .score-buttons {
   display: flex;
 }
+
+.main-button {
+  border: none;
+  text-align: center;
+  width: 250px;
+  padding: 10px;
+  display: block;
+  margin: 10px auto;
+  background: #085BC2;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  margin-left: -125px;
+}
+
+.event-button {
+  border: none;
+  text-align: center;
+  width: 250px;
+  padding: 10px;
+  display: block;
+  margin: 10px auto;
+  background: #5500a1;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.logout-button {
+  border: none;
+  text-align: center;
+  width: 250px;
+  padding: 10px;
+  display: block;
+  margin: 10px auto;
+  background: #d55900;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
