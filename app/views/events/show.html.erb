@@ -1,7 +1,8 @@
 <div class="event-banner">
-  <%= image_tag "cups"%>
+  <%= image_tag "cups" %>
   <h1><%= @event.title %></h1>
 </div>
+
 <div class="winner-banner">
   <%= render partial: 'shared/winner_item', locals: { player: @top_three[1] } %>
   <div class="center-card">
@@ -9,39 +10,38 @@
   </div>
   <%= render partial: 'shared/winner_item', locals: { player: @top_three[2] } %>
 </div>
-
 <% if @players %>
-<div class="player-list">
-  <% @players.each do |player| %>
-    <div class="player-item">
-      <div class="player-icon">
-        <%= image_tag "flags/#{player.country_code}.png" %>
-        <div class="place-circle">
-          <%= player.place %>
+  <div class="player-list">
+    <% @players.each do |player| %>
+      <div class="player-item">
+        <div class="player-icon">
+          <%= image_tag "flags/#{player.country_code}.png" %>
+          <div class="place-circle">
+            <%= player.place %>
+          </div>
+        </div>
+        <div class="player-info">
+          <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
+          <h3 class="small-faded score-info">Score: <span data-player-id="<%= player.id %>"><%= player.score %></span>pts</h3>
         </div>
       </div>
-      <div class="player-info">
-        <h3><%= player.name %>  <span class="small-faded"><%= player.title %></span></h3>
-        <h3 class="small-faded score-info">Score: <span data-player-id="<%= player.id %>"><%= player.score %></span>pts</h3>
+      <div class="score-buttons">
+        <% if @event.user == current_user %>
+          <%= link_to "+", player_path(player, interval: 5), class: "score-button", method: :patch, remote: true %>
+          <%= link_to "-", player_path(player, interval: -5), class: "score-button", method: :patch, remote: true %>
+        <% end %>
       </div>
-    </div>
-    <div class="score-buttons">
-      <% if @event.user == current_user %>
-        <%#= link_to "+", player_path(player, interval: 5), class: "score-button", method: :patch, remote: true %>
-        <%#= link_to "-", player_path(player, interval: -5), class: "score-button", method: :patch, remote: true %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
+<% if @event.user == current_user %>
+  <div class="admin-options">
+    <%= link_to "Open/Close", @event, method: :patch, class: "main-button" %>
+    <%= link_to "My Events", events_path, class: "event-button" %>
+    <%= link_to "Delete Event", @event, method: :delete, data: { confirm: "Are You sure?" }, class: "logout-button" %>
+  </div>
 <% end %>
 
 <% if @event.open %>
-  <%= link_to "Add a player!", new_event_player_path(@event) %>
-<% end %>
-
-
-
-<% if @event.user == current_user %>
-  <%= link_to "Open/Close", @event, method: :patch %>
-  <%= link_to "Delete Event", @event, method: :delete, data: { confirm: "Are You sure?" } %>
+  <%= link_to "Add a player!", new_event_player_path(@event), class: "main-button fixed-button" %>
 <% end %>

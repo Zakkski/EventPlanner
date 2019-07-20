@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-content">
+  <%= image_tag "cups" %>
+  <%= form_tag(searchs_path, method: :get, class: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search the name of an event..." %>
+    <%= submit_tag('Search', :name => nil) %>
+  <% end %>
+</div>
