@@ -38,6 +38,7 @@
   <div class="admin-options">
     <%= link_to "Open/Close", @event, method: :patch, class: "main-button" %>
     <%= link_to "My Events", events_path, class: "event-button" %>
+    <%= link_to "Players", event_players_path(@event), class: "event-button" %>
     <%= link_to "Delete Event", @event, method: :delete, data: { confirm: "Are You sure?" }, class: "logout-button" %>
   </div>
 <% end %>
