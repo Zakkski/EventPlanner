@@ -1,6 +1,10 @@
 class PlayersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
 
+  def index
+    @players = Event.find(params[:event_id]).players
+  end
+
   def new
     @event = Event.find(params[:event_id])
     @player = Player.new
@@ -28,6 +32,12 @@ class PlayersController < ApplicationController
     @score = @player.score
     event = @player.event
     order_places(event)
+  end
+
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy
+    redirect_to event_path(Event.find(params[:event_id]))
   end
 
   private
